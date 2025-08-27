@@ -64,10 +64,42 @@ def bruteforce(cipher: str) -> list[str]:
     
 ['1', '2']
 
-Palindrome
+# Palindrome
+
+# Two-pointers
+
+# is_palindrome('RadAr') -> True
+
+#   i
+#   j
+# RadAr
+
+
+# n/2 + n/2 + n + n
+# => n / 2
+
+# str1 == str2 
+
+# 'abc' == 'abc'
+
+# str1[0] == str2[0]
+# str1[1] == str2[1]
+# str1[2] == str2[2]
 
 def is_palindrome(text: str) -> bool:
+    head = 0
+    tail = len(text) - 1
+    
+    # while head <= tail
+    
+    for _ in range(len(text) // 2):
+        if text[head].lower() != text[tail].lower():
+            return False
+        head += 1
+        tail -= 1
+        
+    return True
 
-Two-pointers
-
-is_palindrome('RadAr') -> True
+print(is_palindrome('rAdAr'))
+print(is_palindrome('abBa'))
+print(is_palindrome('radxat'))
