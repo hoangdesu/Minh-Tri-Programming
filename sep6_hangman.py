@@ -34,15 +34,30 @@
 
 word_database = [
     {
-        'description': '1',
-        'answer': ''
+        'answer': 'SUNI Ha Linh',
+        'description': '1 nữ ca sĩ'
     },
     {
-        'description': '1',
-        'answer': ''
+        'answer': 'Son Tung MTP',
+        'description': 'Hoàng tử nhạc Việt'
     },
     {
-        'description': '1',
-        'answer': ''
+        'answer': '52Hz',
+        'description': 'A Vietnamese female singer',
     },
 ]
+
+import random
+
+# single import
+from random import randint
+
+random_index = randint(0, len(word_database) - 1)
+
+random_entry = word_database[random_index]
+
+print(f"answer: {random_entry['answer']} - description: {random_entry['description']}")
+
+
+
+

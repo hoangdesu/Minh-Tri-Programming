@@ -93,6 +93,9 @@ def recursive_is_prime(num: int, counter = 2) -> bool:
     recursive_is_prime(num, counter + 1)
     return True
 
+# num = 7
+# counter = 2 -> 6 -> recurse
+
 # False
 print(recursive_is_prime(0))
 print(recursive_is_prime(1))
