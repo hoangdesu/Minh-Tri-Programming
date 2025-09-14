@@ -3,7 +3,7 @@ import requests
 ENDPOINT = 'https://valorant-api.com/v1/agents/'
 res = requests.get(ENDPOINT)
 
-print(res)
+# print(res)
 
 if res.ok:
     # print(res.content)
@@ -11,6 +11,8 @@ if res.ok:
     # print(data[7]['displayName'])
     
     # agent_name = input('Enter agent name: ')
+    
+    print(f"All agents ({len(agents)}):")
     
     # Linear search
     for i in range(len(agents)):
@@ -23,11 +25,11 @@ if res.ok:
         abilities = agent.get('abilities')
 
         
-        print(f'{i+1}. {name}: {uuid}')
+        print(f'{i+1}. {name}')
         
-        for ab in abilities:
-            ab_name = ab.get('displayName')
-            print(f'\t- {ab_name}')
+        # for ab in abilities:
+        #     ab_name = ab.get('displayName')
+        #     print(f'\t- {ab_name}')
             
     agent_name = input('\nEnter agent name: ')
     
@@ -37,7 +39,7 @@ if res.ok:
             abilities = agent.get('abilities')
 
         
-            print(f'Found {name}:')
+            print(f'Agent {name} abilities:')
             
             for ab in abilities:
                 ab_name = ab.get('displayName')
