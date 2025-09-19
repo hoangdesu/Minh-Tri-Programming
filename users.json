@@ -1,0 +1,38 @@
+[
+    {
+        "username": "123",
+        "password": "456",
+        "alias": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    {
+        "username": "hehe",
+        "password": "haha",
+        "alias": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    {
+        "username": "abc",
+        "password": "xyz",
+        "alias": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    {
+        "username": "tri",
+        "password": "secret",
+        "alias": [
+            "a",
+            "b",
+            "c"
+        ]
+    }
+]
