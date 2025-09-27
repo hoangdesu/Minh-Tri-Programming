@@ -1,0 +1,35 @@
+h1 {
+  text-align: center;
+  text-transform: capitalize;
+  color: red;
+}
+
+h1:hover {
+  text-decoration: underline;
+}
+
+#chatbox-container {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    /* border: 1px solid red; */
+    text-align: center;
+
+    /* input {
+        margin-left: 450px;
+    } */
+
+    input {
+        padding: 16px 32px;
+        width: 200px;
+        border-radius: 24px;
+        border: none;
+        background: rgb(198, 182, 182);
+        font-size: 16px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+}
