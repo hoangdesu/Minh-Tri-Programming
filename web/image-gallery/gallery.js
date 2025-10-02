@@ -12,12 +12,81 @@ const imageLinks = [
   'https://xehay.vn/uploads/images/2024/1/01/xehay_Koenigsegg%20Jesko%20Odin_040123_6.jpg'
 ];
 
+let currentIndex = 0;
+
+
 // List of image objects 
-const images = imageLinks.map(link => {
+const images = imageLinks.map((link, index) => {
   const img = document.createElement('img');
   img.src = link;
+  // img.className = 'thumbnail-img';
+
+  // default border
+  img.style.border = '2px solid transparent';
+
+  img.addEventListener('mouseenter', () => {
+    if (index !== currentIndex) {
+      img.style.border = '2px solid red';
+    }
+  });
+
+  // reset border
+  img.addEventListener('mouseleave', () => {
+    // ! = =
+    if (index !== currentIndex) {
+      img.style.border = '2px solid transparent';
+    }
+  });
+
+
+  img.addEventListener('click', () => {
+    const clonedImg = img.cloneNode();
+    clonedImg.style.border = 'none';
+
+    console.log('clicked on img', index);
+
+    // clear current container
+    imageView.innerHTML = '';
+
+    // add current img to container
+    imageView.append(clonedImg);
+
+    // also update the currentIndex
+    currentIndex = index;
+
+    // img.style.border = '2px solid blue';
+    resetBorders();
+
+    // TODO: refactor checking buttons style in another function
+    if (currentIndex === 0) {
+      backBtn.disabled = true;
+    } else if (currentIndex === images.length - 1) {
+      nextBtn.disabled = true;
+    } else {
+      backBtn.disabled = false;
+      nextBtn.disabled = false;
+    }
+  });
+
   return img;
 });
+
+const resetBorders = () => {
+  for (let i = 0; i < images.length; i++) {
+    if (i === currentIndex) {
+      images[i].style.border = '2px solid blue';
+    } else {
+      images[i].style.border = '2px solid transparent';
+    }
+  }
+
+  // for ... of ...
+
+  // forEach...
+}
+
+// resetBorders();
+images[currentIndex].style.border = '2px solid blue';
 
 console.log(images);
 
@@ -36,7 +105,7 @@ for (const imageElement of images) {
 }
 
 
-let currentIndex = 0;
+
 
 const changeImage = (newIndex) => {
   if (currentIndex >= 0 && currentIndex <= images.length) {
@@ -62,6 +131,8 @@ const changeImage = (newIndex) => {
       backBtn.disabled = false;
       nextBtn.disabled = false;
     }
+
+    resetBorders();
   }
 
   console.log('current index', currentIndex);
@@ -89,3 +160,4 @@ document.addEventListener('keydown', (evt) => {
     }
   }
 });
+

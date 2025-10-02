@@ -44,3 +44,12 @@ button {
     }
 }
 
+.thumbnail-img {
+    border: 2px solid transparent;
+}
+
+
+.thumbnail-img:hover {
+    border: 2px solid red;
+}
+
