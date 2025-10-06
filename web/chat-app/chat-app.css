@@ -50,3 +50,26 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+
+/* curl -X POST \
+  -H 'Content-Type: application/json' \
+  -H "x-goog-api-key: AIzaSyCBOHnRHRSlJbaqF98PKJ8MN3GAbewbImQ" \
+  https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {"text": "What is 1 + 1"}
+        ]
+      }
+    ]
+  }'
+
+    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent" \
+      -H "x-goog-api-key: AIzaSyCBOHnRHRSlJbaqF98PKJ8MN3GAbewbImQ" \
+      -H 'Content-Type: application/json' \
+      -X POST \
+      -d '{ "contents": [ { "parts": [ { "text": "Explain how AI works in a few words" } ] } ] }'
+       */
