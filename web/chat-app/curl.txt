@@ -1,0 +1,17 @@
+Streaming response with SSE:
+
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse" \
+  -H "x-goog-api-key: AIzaSyCBOHnRHRSlJbaqF98PKJ8MN3GAbewbImQ" \
+  -H 'Content-Type: application/json' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "How does AI work?"
+          }
+        ]
+      }
+    ]
+  }'

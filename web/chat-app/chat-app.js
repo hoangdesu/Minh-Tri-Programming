@@ -1,23 +1,9 @@
-const conversations = [
-  {
-    role: 'user',
-    content: 'wassup :D',
-  },
-  {
-    role: 'bot',
-    content: 'heyy!!',
-  },
-  {
-    role: 'user',
-    content: 'hows the weather today',
-  },
-  {
-    role: 'bot',
-    content: 'pretty goooooddd',
-  },
-];
+const converter = new showdown.Converter();
 
-const convo2 = [
+// text      = '# hello, markdown!',
+// html      = converter.makeHtml(text);
+
+const conversations = [
   {
     role: 'user',
     parts: [
@@ -49,7 +35,7 @@ conversations.forEach((convo) => {
     div.className = 'bot-box';
   }
 
-  div.textContent = convo.content;
+  div.textContent = convo.parts[0].text;
 
   chatBox.append(div);
 });
@@ -67,7 +53,11 @@ chatInput.addEventListener('keypress', (evt) => {
 
     const userChat = {
       role: 'user',
-      content: chatInput.value,
+      parts: [
+        {
+          text: chatInput.value,
+        },
+      ],
     };
 
     conversations.push(userChat);
@@ -77,7 +67,9 @@ chatInput.addEventListener('keypress', (evt) => {
     // also update the UI
     const div = document.createElement('div');
     div.className = 'user-box';
-    div.textContent = userChat.content;
+    const userTextSpan = document.createElement('span');
+    userTextSpan.textContent = chatInput.value;
+    div.append(userTextSpan);
     chatBox.append(div);
 
     // TODO: get real response from LLM
@@ -92,27 +84,23 @@ chatInput.addEventListener('keypress', (evt) => {
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
     const API_KEY = 'AIzaSyCBOHnRHRSlJbaqF98PKJ8MN3GAbewbImQ';
 
-    const content = {
-      contents: [{ parts: [{ text: userChat.content }] }],
-    };
-
-    const newUserConvo2 = {
-      role: 'user',
-      parts: [
-        {
-          text: userChat.content,
-        },
-      ],
-    };
-
-    convo2.push(newUserConvo2);
-
     const div2 = document.createElement('div');
     div2.className = 'bot-box loader';
     // div2.textContent = '';
     chatBox.append(div2);
 
     // Fetch API
+    // Asynchronous: bất đồng bộ
+
+    // reset chat input
+    chatInput.value = '';
+    chatInput.disabled = true;
+
+    chatBox.scrollTo({
+      top: chatBox.scrollHeight,
+      behavior: 'smooth',
+    });
+
     fetch(END_POINT, {
       method: 'POST',
       headers: {
@@ -121,36 +109,36 @@ chatInput.addEventListener('keypress', (evt) => {
       },
       // body: JSON.stringify(content)
       body: JSON.stringify({
-        contents: convo2,
+        contents: conversations,
       }),
     })
+      // ...loading...
       .then((res) => res.json())
       .then((data) => {
-        const botReponse = data.candidates[0].content.parts[0].text;
         const botRes = {
           role: 'model',
           parts: [
             {
-              text: botReponse,
+              text: data.candidates[0].content.parts[0].text,
             },
           ],
         };
 
-        convo2.push(botRes);
-
-        // mimicking the response back from server
-        const botChat = {
-          role: 'bot',
-          content: botReponse,
-        };
-
-        conversations.push(botChat);
+        conversations.push(botRes);
 
         div2.className = 'bot-box';
-        div2.textContent = botChat.content;
-      });
+        div2.innerHTML = converter.makeHtml(
+          data.candidates[0].content.parts[0].text
+        );
 
-    // reset chat input
-    chatInput.value = '';
+        chatInput.disabled = false;
+
+        chatBox.scrollTo({
+          top: chatBox.scrollHeight,
+          behavior: 'smooth',
+        });
+      });
   }
 });
+
+// Refactor: clean up + optimize
