@@ -10,17 +10,42 @@ html, body {
     overflow: hidden;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+#conversations-list {
+  border: 1px solid blue;
+  width: 300px;
+}
+
 
 #chat-box {
+    position: relative;
     border: 1px solid red;
-    width: 60%;
-    margin: auto;
-    min-height: 80vh;
-    max-height: 80vh;
+    /* width: 60%; */
+    /* margin: auto; */
+    /* height: 80vh; */
     overflow-y: scroll;
     padding: 26px;
     /* vertical horizontal */
     padding-bottom: 150px;
+    flex-grow: 1;
+}
+
+.convo-container {
+  padding: 10px;
+}
+
+.convo-container:hover {
+  background-color: rgb(191, 216, 237);
+  cursor: pointer;
+}
+
+.active-convo {
+  background-color: #a0c4dc;
 }
 
 .user-box {
@@ -41,8 +66,8 @@ html, body {
 }
 
 #chat-input {
-    position: fixed;
-    bottom: 20px;
+    position: absolute;
+    bottom: 100px;
     left: 50%;
     transform: translate(-50%);
     max-width: 500px;
@@ -68,6 +93,8 @@ html, body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
 
 
 

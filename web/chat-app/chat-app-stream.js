@@ -41,7 +41,7 @@ function renderMessage(convo) {
   return div;
 }
 
-conversations.forEach(renderMessage);
+// conversations.forEach(renderMessage);
 
 // Scroll to bottom helper
 function scrollToBottom() {
@@ -107,6 +107,9 @@ async function streamResponse(userMessage) {
       
       const chunk = decoder.decode(value, { stream: true });
       const lines = chunk.split('\n');
+
+      console.log('chunk:', chunk);
+      
       
       for (const line of lines) {
         if (line.startsWith('data: ')) {
@@ -149,9 +152,18 @@ async function streamResponse(userMessage) {
   }
 }
 
+
+// const createNewConvo = async () => {
+  
+// }
+
 // Event listener for chat input
 chatInput.addEventListener('keypress', (evt) => {
   if (evt.key === 'Enter' && chatInput.value.trim()) {
     streamResponse(chatInput.value.trim());
+
+    // if no chat selected: start a new chat
+    // chatInput.valu
+
   }
 });
