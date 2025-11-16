@@ -13,11 +13,42 @@ fetch(`${SERVER_ENDPOINT}/todos`)
             // TODO: implement the delete function
             const btn = document.createElement('button');
             btn.textContent = '❌';
+            btn.className = 'delete-btn';
+
+            btn.addEventListener('click', () => {
+                console.log('click on', todo);
+
+                fetch(`${SERVER_ENDPOINT}/todos`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ todo: todo })
+                })
+                    .then(res => {
+                        console.log(res);
+                        window.location.reload();
+                    })
+                    // .then()
+                    // .then()
+                    // .catch()
+                
+            });
+
             li.appendChild(btn);
 
             todosContainer.append(li);
         });
+
+
     })
     .catch(err => {
         console.log('Error getting all TODOS:', err); 
     });
+
+
+// ASCII
+
+// a = 97 => hex 
+
+// 01010101 1100101010

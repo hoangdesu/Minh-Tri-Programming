@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form, status
 from fastapi.responses import RedirectResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Annotated
+from pydantic import BaseModel
 # from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
@@ -32,6 +33,7 @@ async def root():
 
 @app.get('/todos')
 def get_todos():
+    print('getting all todos')
     return todos
 
 
@@ -42,4 +44,19 @@ async def add_new_todo(todo_input: Annotated[str, Form()]):
     return RedirectResponse(url="http://127.0.0.1:5500/", status_code=status.HTTP_303_SEE_OTHER)
 
 
-# TODO: implement the delete function
+class Todo(BaseModel):
+    todo: str
+
+@app.delete('/todos')
+def delete_todo(todo_obj: Todo):
+    print('deleting...', todo_obj)
+    
+    todo_content = todo_obj.todo
+    print(todo_content)
+
+    if todo_content in todos:
+        todos.remove(todo_content)
+    
+    return RedirectResponse(url="http://127.0.0.1:5500/", status_code=status.HTTP_303_SEE_OTHER)
+
+    
