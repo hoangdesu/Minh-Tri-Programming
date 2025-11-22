@@ -7,10 +7,11 @@ fetch(`${SERVER_ENDPOINT}/todos`)
     .then(res => res.json())
     .then(todos => {
         todos.forEach(todo => {
+            console.log(todo);
+            
             const li = document.createElement('li');
-            li.textContent = todo;
+            li.textContent = todo.content;
 
-            // TODO: implement the delete function
             const btn = document.createElement('button');
             btn.textContent = '❌';
             btn.className = 'delete-btn';

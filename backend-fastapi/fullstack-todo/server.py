@@ -5,9 +5,24 @@ from typing import Annotated
 from pydantic import BaseModel
 # from fastapi.templating import Jinja2Templates
 
+import sqlite3
+
 app = FastAPI()
 
-todos = ['Install UV', 'Learn FastAPI', 'Install database']
+# todos = ['Install UV', 'Learn FastAPI', 'Install database']
+
+# Switch over to using data from SQLite3
+
+conn = sqlite3.connect("todos.db")
+conn.row_factory = sqlite3.Row
+
+cur = conn.cursor()
+res = cur.execute("SELECT * FROM todos")
+
+todos = res.fetchall()
+
+for row in todos:
+    print(dict(row))
 
 origins = [
     "http://localhost",

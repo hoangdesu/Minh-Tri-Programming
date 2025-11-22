@@ -15,3 +15,39 @@ SELECT name, duration_ms
 FROM songs
 ORDER BY duration_ms DESC
 LIMIT 5;
+
+
+--WHERE (dance > 0.75) AND (valence > 0.75) AND ()
+
+SELECT AVG(energy) AS [Average energy]
+FROM songs;
+
+
+
+--SQL joins
+
+SELECT songs.name AS 'song name', artists.name AS 'artist name'
+FROM songs
+JOIN artists ON songs.artist_id = artists.id;
+
+
+-- 6
+SELECT songs.name AS 'song name', artists.name AS 'artist name'
+FROM songs
+JOIN artists ON songs.artist_id = artists.id
+WHERE artists.name = 'Post Malone';
+
+-- sub queries
+SELECT name
+FROM songs
+WHERE artist_id = (
+    SELECT id
+    FROM artists
+    WHERE name = 'Post Malone'
+);
+
+
+-- 8
+SELECT name
+FROM songs
+WHERE name LIKE '%feat%'
