@@ -24,11 +24,11 @@ fetch(`${SERVER_ENDPOINT}/todos`)
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ todo: todo })
+                    body: JSON.stringify({ todo_id: todo.id })
                 })
                     .then(res => {
                         console.log(res);
-                        window.location.reload();
+                        // window.location.reload();
                     })
                     // .then()
                     // .then()
@@ -36,7 +36,15 @@ fetch(`${SERVER_ENDPOINT}/todos`)
                 
             });
 
+            
+        
+
             li.appendChild(btn);
+
+            const editBtn = document.createElement('button');
+            editBtn.textContent = '✏️';
+            editBtn.className = 'edit-btn';
+            li.append(editBtn);
 
             todosContainer.append(li);
         });
