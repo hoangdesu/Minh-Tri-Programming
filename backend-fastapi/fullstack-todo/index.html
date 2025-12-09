@@ -14,11 +14,78 @@
     </form>
 
     <div>
-        <ul id="todos-container">
-            <!-- <li>Install UV</li>
+        <h2>Demo table</h2>
+        <table border="1">
+            <!-- Row 1: headers -->
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Completed</th>
+                <th>Created at</th>
+                <th rowspan="5">
+                    <p>Like and subscribe</p>
+                    <div>
+                        <button onclick="onButtonClicked('Like 👍')">Like</button>
+                        <button onclick="onButtonClicked('Subscribe 🔔')">Subscribe</button>
+                    </div>
+                </th>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr>
+                <td>1</td>
+                <td>Setup frontend</td>
+                <td style="text-align: center;">
+                    <input type="checkbox">
+                </td>
+                <td>today</td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr>
+                <td>2</td>
+                <td>Connect frontend with backend</td>
+                <td style="text-align: center;">
+                    <input type="checkbox" checked>
+                </td>
+                <td>tomorrow</td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr>
+                <td>3</td>
+                <td>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1200px-SQLite370.svg.png" alt="" width="200">
+                </td>
+                <td style="text-align: center;">
+                    <input type="checkbox">
+                </td>
+                <td>tomorrow</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">Created by Brian Nguyen</td>
+            </tr>
+
+        </table>
+
+
+        <h2>Todos</h2>
+        <table id="todos-container" border="1">
+            <!-- 
+            <li>Install UV</li>
             <li>Learn FastAPI</li>
-            <li>Install database</li> -->
-        </ul>
+            <li>Install database</li> 
+            -->
+
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Completed</th>
+                <th>Created at</th>
+                <th>Actions</th>
+            </tr>
+        </table>
     </div>
 
     <script src="todos.js"></script>

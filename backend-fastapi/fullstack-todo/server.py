@@ -69,13 +69,44 @@ def get_todos():
 
     todos = res.fetchall()
 
-    for row in todos:
-        print(dict(row))
+    # for row in todos:
+    #     print(dict(row))
+
+    # parse data before sending back to client: 0->False, 1->True
+    def parse_todo(td):
+        todo = dict(td)
+        if todo.get('completed') == 0:
+            todo['completed'] = False
+        else:
+            todo['completed'] = True            
+        return todo
+
+    parsed_todos = list(map(parse_todo, todos))
+
+    print(parsed_todos)
+    # => JS equivalent:
+    
+    # const parsedTodos = todos.map(todo => {
+    #     if (todo.completed === 0) {
+    #         todo.completed = false;
+    #     } else {
+    #         todo.completed = true;
+    #     }
+    #     return todo;
+    # })
+
+    
+    # for i in range(len(todos)):
+    #     print(dict(todos[i]).get('completed'))
+        # if todos[i].completed
+        # todos[i].completed = 
+
+    # parsed_todos = [todo for todo in todos if todo.get('completed') == 0]
 
     # optional, good practice
     cur.close()
     
-    return todos
+    return parsed_todos
 
 
 @app.post('/todos')
