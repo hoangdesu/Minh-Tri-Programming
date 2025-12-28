@@ -81,7 +81,9 @@ def get_todos():
             todo['completed'] = True            
         return todo
 
+    # new_list = map(fn, og_list)
     parsed_todos = list(map(parse_todo, todos))
+    
 
     print(parsed_todos)
     # => JS equivalent:
@@ -170,4 +172,25 @@ def delete_todo(todo: Todo):
     
 #     'OR 1 = 1'
 
+
+class UpdateRequest(BaseModel):
+    todo_id: int
+    new_completed_status: bool
     
+@app.put('/todos/update-complete')
+def update_completed_status(req: UpdateRequest):
+    print('updating...', req)
+
+    cur = conn.cursor()
+
+    res = cur.execute("""
+                      UPDATE todos
+                      SET completed = ?
+                      WHERE id = ?
+                      """, (req.new_completed_status, req.todo_id,))
+    
+    conn.commit()
+
+    cur.close()
+    
+    return 'update'

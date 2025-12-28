@@ -1,5 +1,5 @@
 CREATE TABLE todos (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     content TEXT,
     completed BOOLEAN DEFAULT false,
     created_at TEXT DEFAULT (datetime('now', 'localtime'))
