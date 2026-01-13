@@ -17,7 +17,7 @@ app = FastAPI()
 conn = sqlite3.connect("todos.db", check_same_thread=False)
 conn.row_factory = sqlite3.Row
 
-    
+
 # conn.close()
 
 
@@ -36,8 +36,8 @@ app.add_middleware(
 )
 
 # templates = Jinja2Templates(directory="templates")
-    
-    
+
+
 @app.get("/")
 async def root():
     return {"message": "TODOs app"}
@@ -46,20 +46,20 @@ async def root():
 @app.get('/todos')
 def get_todos():
     print('getting all todos')
-    
+
     # --- Approach 1: create separate connection to db on every call
     # conn = sqlite3.connect("todos.db")
     # conn.row_factory = sqlite3.Row
 
     # cur = conn.cursor()
-    
+
     # res = cur.execute("SELECT * FROM todos")
 
     # todos = res.fetchall()
 
     # for row in todos:
     #     print(dict(row))
-        
+
     # conn.close()
 
     # --- Approach 2: re-use connection
@@ -78,16 +78,15 @@ def get_todos():
         if todo.get('completed') == 0:
             todo['completed'] = False
         else:
-            todo['completed'] = True            
+            todo['completed'] = True
         return todo
 
     # new_list = map(fn, og_list)
     parsed_todos = list(map(parse_todo, todos))
-    
 
     print(parsed_todos)
     # => JS equivalent:
-    
+
     # const parsedTodos = todos.map(todo => {
     #     if (todo.completed === 0) {
     #         todo.completed = false;
@@ -97,17 +96,16 @@ def get_todos():
     #     return todo;
     # })
 
-    
     # for i in range(len(todos)):
     #     print(dict(todos[i]).get('completed'))
-        # if todos[i].completed
-        # todos[i].completed = 
+    # if todos[i].completed
+    # todos[i].completed =
 
     # parsed_todos = [todo for todo in todos if todo.get('completed') == 0]
 
     # optional, good practice
     cur.close()
-    
+
     return parsed_todos
 
 
@@ -115,7 +113,7 @@ def get_todos():
 async def add_new_todo(todo_input: Annotated[str, Form()]):
     print('got a new todo', todo_input)
     # todos.append(todo_input)
-    
+
     cur = conn.cursor()
 
     cur.execute("""
@@ -123,24 +121,24 @@ async def add_new_todo(todo_input: Annotated[str, Form()]):
         VALUES (?)
     """, (todo_input,))
 
-
     # Note: don't use f-string to prevent SQL-injection
 
     # save final changes to db
     conn.commit()
-    
+
     cur.close()
-    
+
     return RedirectResponse(url="http://127.0.0.1:5500/", status_code=status.HTTP_303_SEE_OTHER)
 
 
 class Todo(BaseModel):
     todo_id: int
 
+
 @app.delete('/todos')
 def delete_todo(todo: Todo):
     print('deleting...', todo)
-    
+
     # todo_content = todo_obj.todo
     # print(todo_content)
 
@@ -155,42 +153,44 @@ def delete_todo(todo: Todo):
     """, (todo.todo_id,))
 
     conn.commit()
-    
+
     cur.close()
-    
+
     return RedirectResponse(url="http://127.0.0.1:5500/", status_code=status.HTTP_303_SEE_OTHER)
 
-    
 
 # .get login:
-    
+
 #     username password
-    
-#     SELECT uname, pwd 
+
+#     SELECT uname, pwd
 #     FROM users
 #     WHERE username = uname AND password = pwd;
-    
+
 #     'OR 1 = 1'
 
 
 class UpdateRequest(BaseModel):
     todo_id: int
     new_completed_status: bool
-    
-@app.put('/todos/update-complete')
+
+
+@app.put('/todos/update-status')
 def update_completed_status(req: UpdateRequest):
     print('updating...', req)
 
     cur = conn.cursor()
 
-    res = cur.execute("""
-                      UPDATE todos
-                      SET completed = ?
-                      WHERE id = ?
-                      """, (req.new_completed_status, req.todo_id,))
-    
+    cur.execute("""
+                UPDATE todos
+                SET completed = ?
+                WHERE id = ?
+                """,
+                (req.new_completed_status, req.todo_id,)
+                )
+
     conn.commit()
 
     cur.close()
-    
+
     return 'update'

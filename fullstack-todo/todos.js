@@ -24,8 +24,8 @@ function checkboxChangeHandler(event) {
     console.log(event.target.getAttribute('data-todo-id'), event.target.checked);
     const todoId = event.target.getAttribute('data-todo-id');
     
-    fetch(`${SERVER_ENDPOINT}/todos/update-complete`, {
-        method: 'PUT',
+    fetch(`${SERVER_ENDPOINT}/todos/update-status`, {
+        method: 'PUT', // patch is also OK
         headers: {
             'Content-Type': 'application/json'
         },
@@ -48,7 +48,9 @@ const renderTodo = (todo) => {
                 ${todo.content}
             </td>
             <td style="text-align: center;">
-                <input type="checkbox" ${todo.completed && "checked"} data-todo-id=${todo.id} onchange="checkboxChangeHandler(event)">
+                <input type="checkbox" ${todo.completed && "checked"} data-todo-id=${todo.id} 
+                onchange="checkboxChangeHandler(event)"
+                >
             </td>
             <td>${todo.created_at}</td>
             <td>
