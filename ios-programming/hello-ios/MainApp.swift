@@ -14,7 +14,9 @@ struct hello_iosApp: App {
         WindowGroup {
 //            ContentView()
             
-            Jan13_BasicSwift()
+//            Jan13_BasicSwift()
+            
+            Jan17_List()
         }
     }
 }
