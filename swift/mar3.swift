@@ -32,49 +32,31 @@
 // func extract_value("<time>2026-02-07T00:05:57Z</time>")
 // -> "time": "2026-02-07T00:05:57Z"
 
-// // optional
+// optional
 // func extract_attributes("<trkpt lat="10.7734670" lon="106.7260430">")
-// -> [
-//     lat: 10.7734670,
-//     lon: 106.7260430
-// ]
+// -> [lat: 10.7734670, lon: 106.7260430]
 
+/// Extracts tag name and content from an XML-style element string.
+/// Returns [key: value] or nil if parsing fails.
+func extractValue(element: String) -> [String: String]? {
+    guard let openBracket = element.firstIndex(of: "<"),
+          let closeBracket = element.firstIndex(of: ">"),
+          closeBracket > openBracket else { return nil }
 
-// Markdown: text + simple stylings
+    let key = String(element[element.index(after: openBracket)..<closeBracket])
 
-func extract_value(element: String) {
-    var i = 0
+    let valueStart = element.index(after: closeBracket)
+    guard valueStart < element.endIndex,
+          let nextOpen = element[valueStart...].firstIndex(of: "<") else { return nil }
 
-    var key = ""
-    var val = ""
+    let value = String(element[valueStart..<nextOpen])
 
-    // for char in element {
-    //     print(char)
-    //     if char == "<" {
-
-    //     }
-    // }
-
-    while i < element.count {
-        let index = element.index(element.startIndex, offsetBy: i)
-        if String(element[index]) == "<" {
-            
-            i += 1 // shift right 1 position
-
-            while String(element[index]) != ">" {
-                key += String(element[index])
-                i += 1
-            }
-        }
-
-        i += 1
-    }
-
-    print("key:", key) // "time"
-    
+    return [key: value]
 }
-                    //  i
-                    //  012345->
-extract_value(element: "<time>2026-02-07T00:05:57Z</time>")
-// => time: "2026-02-07T00:05:57Z"
+
+// Example
+if let result = extractValue(element: "<time>2026-02-07T00:05:57Z</time>") {
+    print(result)
+}
+// => ["time": "2026-02-07T00:05:57Z"]
 
