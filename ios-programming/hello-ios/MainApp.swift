@@ -16,7 +16,13 @@ struct hello_iosApp: App {
             
 //            Jan13_BasicSwift()
             
-            Jan17_List()
+//            Jan17_List()
+            
+//            Mar27_RenderListView()
+            
+            Apr5_Navigation()
+            
+            
         }
     }
 }

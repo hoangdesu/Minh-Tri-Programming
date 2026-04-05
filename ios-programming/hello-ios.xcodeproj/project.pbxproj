@@ -10,6 +10,7 @@
 		D303B9532F1B69D9008F3C87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303B9522F1B69D9008F3C87 /* HomeView.swift */; };
 		D303B9552F1B6CA1008F3C87 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303B9542F1B6CA1008F3C87 /* LoginView.swift */; };
 		D303B9572F1B6DAE008F3C87 /* Jan17_List.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303B9562F1B6DAE008F3C87 /* Jan17_List.swift */; };
+		D377FF472F76BF9A001652CB /* Mar27_RenderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D377FF462F76BF9A001652CB /* Mar27_RenderListView.swift */; };
 		D3D022A92F1685AA00C87E29 /* Jan13_BasicSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D022A82F1685AA00C87E29 /* Jan13_BasicSwift.swift */; };
 		D3D19F912F138082005A96A6 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D19F902F138082005A96A6 /* MainApp.swift */; };
 		D3D19F932F138082005A96A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D19F922F138082005A96A6 /* ContentView.swift */; };
@@ -18,6 +19,9 @@
 		D3D19FA22F138084005A96A6 /* hello_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D19FA12F138084005A96A6 /* hello_iosTests.swift */; };
 		D3D19FAC2F138084005A96A6 /* hello_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D19FAB2F138084005A96A6 /* hello_iosUITests.swift */; };
 		D3D19FAE2F138084005A96A6 /* hello_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D19FAD2F138084005A96A6 /* hello_iosUITestsLaunchTests.swift */; };
+		D3EE4FA32F8241FA001385B4 /* Apr5_Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE4FA22F8241FA001385B4 /* Apr5_Navigation.swift */; };
+		D3F28DA42F8245D60041C323 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F28DA32F8245D60041C323 /* ActivityDetailView.swift */; };
+		D3F28DA72F824F660041C323 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F28DA62F824F660041C323 /* Fruit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,7 @@
 		D303B9522F1B69D9008F3C87 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D303B9542F1B6CA1008F3C87 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D303B9562F1B6DAE008F3C87 /* Jan17_List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jan17_List.swift; sourceTree = "<group>"; };
+		D377FF462F76BF9A001652CB /* Mar27_RenderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mar27_RenderListView.swift; sourceTree = "<group>"; };
 		D3D022A82F1685AA00C87E29 /* Jan13_BasicSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jan13_BasicSwift.swift; sourceTree = "<group>"; };
 		D3D19F8D2F138082005A96A6 /* hello-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hello-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D19F902F138082005A96A6 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
@@ -52,6 +57,9 @@
 		D3D19FA72F138084005A96A6 /* hello-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "hello-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D19FAB2F138084005A96A6 /* hello_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello_iosUITests.swift; sourceTree = "<group>"; };
 		D3D19FAD2F138084005A96A6 /* hello_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D3EE4FA22F8241FA001385B4 /* Apr5_Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apr5_Navigation.swift; sourceTree = "<group>"; };
+		D3F28DA32F8245D60041C323 /* ActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailView.swift; sourceTree = "<group>"; };
+		D3F28DA62F824F660041C323 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,7 @@
 		D3D19F8F2F138082005A96A6 /* hello-ios */ = {
 			isa = PBXGroup;
 			children = (
+				D3F28DA52F824F540041C323 /* Models */,
 				D303B9522F1B69D9008F3C87 /* HomeView.swift */,
 				D3D022A82F1685AA00C87E29 /* Jan13_BasicSwift.swift */,
 				D3D19F902F138082005A96A6 /* MainApp.swift */,
@@ -110,6 +119,9 @@
 				D3D19F962F138084005A96A6 /* Preview Content */,
 				D303B9542F1B6CA1008F3C87 /* LoginView.swift */,
 				D303B9562F1B6DAE008F3C87 /* Jan17_List.swift */,
+				D377FF462F76BF9A001652CB /* Mar27_RenderListView.swift */,
+				D3EE4FA22F8241FA001385B4 /* Apr5_Navigation.swift */,
+				D3F28DA32F8245D60041C323 /* ActivityDetailView.swift */,
 			);
 			path = "hello-ios";
 			sourceTree = "<group>";
@@ -137,6 +149,14 @@
 				D3D19FAD2F138084005A96A6 /* hello_iosUITestsLaunchTests.swift */,
 			);
 			path = "hello-iosUITests";
+			sourceTree = "<group>";
+		};
+		D3F28DA52F824F540041C323 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3F28DA62F824F660041C323 /* Fruit.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,12 +289,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F28DA72F824F660041C323 /* Fruit.swift in Sources */,
 				D3D022A92F1685AA00C87E29 /* Jan13_BasicSwift.swift in Sources */,
 				D303B9532F1B69D9008F3C87 /* HomeView.swift in Sources */,
 				D3D19F932F138082005A96A6 /* ContentView.swift in Sources */,
+				D377FF472F76BF9A001652CB /* Mar27_RenderListView.swift in Sources */,
 				D303B9552F1B6CA1008F3C87 /* LoginView.swift in Sources */,
+				D3EE4FA32F8241FA001385B4 /* Apr5_Navigation.swift in Sources */,
 				D3D19F912F138082005A96A6 /* MainApp.swift in Sources */,
 				D303B9572F1B6DAE008F3C87 /* Jan17_List.swift in Sources */,
+				D3F28DA42F8245D60041C323 /* ActivityDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

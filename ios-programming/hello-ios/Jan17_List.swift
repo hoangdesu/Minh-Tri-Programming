@@ -17,7 +17,7 @@ struct Jan17_List: View {
 //
 //    }
     
-    let students = ["Harry", "Hermione", "Ron"]
+    let students = ["Harry", "Hermione", "Ron", "Brian Nguyen"]
     @State private var selectedStudent = "Harry"
 
     var body: some View {
@@ -48,9 +48,7 @@ struct Jan17_List: View {
 //                for student in students {
 //                    
 //                }
-                
-                    
-                
+               
                 
             }
             .navigationTitle("Dynamic rendering")
