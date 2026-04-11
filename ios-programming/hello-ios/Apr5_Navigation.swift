@@ -70,8 +70,13 @@ struct Apr5_Navigation: View {
                         Text(eachActivity)
                     }
                 }
-                .navigationTitle("Activities")
+                NavigationLink {
+                    Apr11_Map()
+                } label: {
+                    Label("Strava run (GPX map)", systemImage: "map")
+                }
             }
+            .navigationTitle("Activities")
         }
             
             

@@ -8,6 +8,7 @@
 import SwiftUI
 
 
+
 @main
 struct hello_iosApp: App {
     var body: some Scene {
@@ -20,7 +21,11 @@ struct hello_iosApp: App {
             
 //            Mar27_RenderListView()
             
-            Apr5_Navigation()
+//            Apr5_Navigation()
+            
+//            MapKitDemoView1()
+            
+            Apr11_MapView()
             
             
         }
